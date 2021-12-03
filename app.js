@@ -8,7 +8,7 @@ const searchButton = document.querySelector("#searchBtn");
 
 searchField.addEventListener("input", (e)=> {
    searchText =  e.target.value;
-   search();
+   
 })
 
 
@@ -18,16 +18,18 @@ function search () {
         
         console.log(searchText);
 
+        manageTheData();
 
 
     })
 }
 
 
-const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchText}&format=json&nojsoncallback=1&per_page=1&page=1`;
+
 
 
 async function getData () {
+    const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchText}&format=json&nojsoncallback=1&per_page=1&page=1`;
     
     const response = await fetch(url);
     const data = await response.json();
@@ -36,6 +38,13 @@ async function getData () {
 }
 
 
-getData().then((data)=>{
-    console.log(data);
-});
+
+function manageTheData() {
+    getData().then((data)=>{
+        console.log(data);
+    });
+}
+
+
+
+search();
