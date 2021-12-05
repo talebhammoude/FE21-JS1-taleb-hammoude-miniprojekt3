@@ -1,30 +1,9 @@
 const KEY = '313698e5d41cebecef7dd7a6fb93043d';
 let searchText = '';
 
-
 const searchField = document.querySelector("#searchpic");
 const searchButton = document.querySelector("#searchBtn");
-
-
-searchField.addEventListener("input", (e)=> {
-   searchText =  e.target.value;
-   
-})
-
-
-
-function search () {
-    searchButton.addEventListener("click", ()=> {
-        
-        console.log(searchText);
-
-        manageTheData();
-
-
-    })
-}
-
-
+const displayPic = document.querySelector("#pics")
 
 
 
@@ -39,10 +18,46 @@ async function getData () {
 
 
 
-function manageTheData() {
-    getData().then((data)=>{
-        console.log(data);
-    });
+
+searchField.addEventListener("input", (e)=> {
+   searchText =  e.target.value;
+   
+})
+
+
+
+function search () {
+    searchButton.addEventListener("click", ()=> {
+        
+        console.log(searchText);
+
+
+        getData().then((data)=>{
+            
+            manageTheData(data.photos.photo[0]);
+        });
+        
+
+        
+
+    })
+}
+
+
+
+
+function manageTheData(photoObject) {
+
+    let photo = photoObject;
+    let size = 'm';
+    let imgUrl = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`;
+
+    let img = document.createElement('img');
+    img.src = imgUrl;
+
+    displayPic.appendChild(img);
+
+ 
 }
 
 
