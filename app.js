@@ -26,7 +26,7 @@ function search () {
 
 
         getData().then((data)=>{
-            //för att lista fram 3 bilder
+            //för att lista fram fler bilder.
             for(let i= 0; i< picAmount.value; i++) {
                 manageTheData(data.photos.photo[i]);
             }
