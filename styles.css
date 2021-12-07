@@ -1,12 +1,17 @@
 #pics {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    background-color: #dac28e;
+    padding: 10px;
   }
   
-  img {
-    width: 32%;
-    padding-bottom: 12%; 
-    margin-bottom: 2%; 
-    position: relative;
+
+
+  #pics > img {
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
   }
