@@ -8,12 +8,20 @@ const picAmount = document.querySelector("#amount");
 
 
 async function getData () {
-    const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchField.value}&format=json&nojsoncallback=1&per_page=${picAmount.value}&page=1`;
-    
-    const response = await fetch(url);
-    const data = await response.json();
 
-    return data;
+    try{
+
+        const url = `https://www.flickr.com/services/rest/?api_key=${KEY}&method=flickr.photos.search&text=${searchField.value}&format=json&nojsoncallback=1&per_page=${picAmount.value}&page=1`;
+    
+        const response = await fetch(url);
+        const data = await response.json();
+
+        return data;
+
+    } catch(err) {
+        alert("Ojdå, något gick fel"); 
+      }
+    
 }
 
 
